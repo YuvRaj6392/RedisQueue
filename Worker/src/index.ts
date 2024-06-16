@@ -23,7 +23,7 @@ async function startWorker() {
         
         while (true) {
             try {
-                const submission = await client.brPop("problems", 0);// this line means it will run infinitely and as soon as it gets a submission it goes to the next line
+                const submission = await client.brPop("problems", 0);//this line means that it will continue waiting for the queue for the infinite time. If we had written ("problems",0) it would have waited for the empty queue for 10 seconds before exiting
                 console.log(submission)
                 // @ts-ignore
                 await processSubmission(submission.element);
